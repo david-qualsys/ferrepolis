@@ -1,0 +1,21 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+  <record id="stock_picking_view_inh" model="ir.ui.view" >
+      <field name="name">stock_picking_view_sku_client</field>
+      <field name="model">stock.picking</field>
+      <field name="type">form</field>
+      <field name="inherit_id" ref="stock.view_picking_form" />
+
+      <field name="arch" type="xml">
+
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_ids_without_package']/tree[1]/field[@name='product_id']" position="before">
+          <field name="sku_client" attrs="{'readonly': ['|', ('state', '=', 'done')]}"/>
+        </xpath>
+ 
+      </field>
+    </record>
+   </data>     
+
+
+</odoo>

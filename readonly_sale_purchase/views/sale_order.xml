@@ -1,0 +1,71 @@
+<odoo>
+
+  <record id="acl_readonly_sale_order" model="ir.ui.view" >
+    <field name="name">acl_readonly_sale_order</field>
+    <field name="model">sale.order</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="sale.view_order_form" />
+    <field name="arch" type="xml">
+
+
+      <xpath expr="//form[1]" position="attributes">
+        <attribute name="edit">false</attribute>
+        <attribute name="create">false</attribute>
+      </xpath>
+
+
+      <button name="print_quotation" position="replace">
+        <button name="action_quotation_send" string="Send by Email" type="object" states="draft" class="btn-primary" invisible="1"/>     
+      </button> 
+      <button name="action_quotation_send" position="replace">
+        <button name="action_quotation_send" type="object" string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales" class="btn-primary" context="{'proforma': True}" invisible="1"/>     
+      </button> 
+      <button name="action_cancel" position="replace">
+        <button name="action_cancel" invisible="1"/>     
+      </button> 
+      <button name="action_done" position="replace">
+        <button name="action_done" invisible="1"/>     
+      </button> 
+
+     <button name="action_draft" position="replace">
+      <button name="action_draft" invisible="1"/>   
+    </button>
+    <button name="action_quotation_send" position="replace">
+      <button name="action_quotation_send" invisible="1"/>   
+    </button>
+    <button name="260" position="replace">
+      <button name="260" invisible="1"/>   
+    </button>
+
+
+    <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+      <!-- <attribute name="states" /> delete states attribute, it's influencing invisible behaviour -->
+      <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+       <!-- <attribute name="states" />  delete states attribute, it's influencing invisible behaviour -->
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      </field>
+    </record>
+
+
+
+    <record id="acl_readonly_sale_order_tree" model="ir.ui.view" >
+      <field name="name">acl_readonly_sale_order_tree</field>
+      <field name="model">sale.order</field>
+      <field name="type">tree</field>
+      <field name="inherit_id" ref="sale.view_quotation_tree" />
+      <field name="arch" type="xml">
+
+        <xpath expr="//tree[1]" position="attributes">
+          <attribute name="create">false</attribute>
+          <attribute name="edit">false</attribute>
+        </xpath>
+
+
+      </field>
+    </record>
+
+  </odoo>

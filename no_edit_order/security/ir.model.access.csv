@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fields_faly_fields_faly,fields_faly.fields_faly,model_fields_faly_fields_faly,,1,0,0,0

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="quality_alert_form_view_inherit" model="ir.ui.view">
+        <field name="name">quality.alert.form.view.inherit</field>
+        <field name="model">quality.alert</field>
+        <field name="inherit_id" ref="quality_control.quality_alert_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='priority']" position="after">
+                <field name="saleorder_id" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

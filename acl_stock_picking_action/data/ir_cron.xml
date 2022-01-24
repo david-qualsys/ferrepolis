@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        <record id="sgt_update_stock_movements" model="ir.cron">
+            <field name="name">Limpia para subcontratación</field>
+            <field name="active">False</field>
+            <field name="model_id" ref="stock.model_stock_picking_type"/>
+            <field name="state">code</field>
+            <field name="code">
+model.cleaning_stock(11)
+            </field>
+        </record>        
+    </data>
+</odoo>

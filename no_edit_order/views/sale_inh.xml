@@ -1,0 +1,28 @@
+<odoo>
+
+  <record id="int_sale_no_edit_inh" model="ir.ui.view" >
+    <field name="name">int_sale_no_edit_inh</field>
+    <field name="model">sale.order</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="sale_crm.sale_view_inherit123" />
+    <field name="arch" type="xml">
+
+      <field name="tag_ids" position="replace"> 
+        <field name="tag_ids" readonly="1" widget="many2many_tags" attrs="{'readonly': [('state', 'in', ('done','cancel','sent'))]}"/> 
+      </field>
+      <field name="opportunity_id" position="replace"> 
+        <field name="opportunity_id" attrs="{'readonly': [('state', 'in', ('done','cancel','sent'))]}"/> 
+      </field>
+      <field name="medium_id" position="replace"> 
+        <field name="medium_id"  attrs="{'readonly': [('state', 'in', ('done','cancel','sent'))]}"/> 
+      </field>
+      <field name="campaign_id" position="replace"> 
+        <field name="campaign_id"  attrs="{'readonly': [('state', 'in', ('done','cancel','sent'))]}"/> 
+      </field>
+      <field name="source_id" position="replace"> 
+        <field name="source_id" attrs="{'readonly': [('state', 'in', ('done','cancel','sent'))]}"/> 
+      </field>    
+
+  </field>
+  </record>
+</odoo>

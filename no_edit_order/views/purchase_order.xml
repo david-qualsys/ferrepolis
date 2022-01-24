@@ -1,0 +1,53 @@
+<odoo>
+
+  <record id="int_no_edit_purchase_order" model="ir.ui.view" >
+    <field name="name">int_no_edit_purchase_order</field>
+    <field name="model">purchase.order</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='order_line']" position="attributes">
+        <attribute name="attrs">{"readonly": [["state","in",["done","cancel","sent","purchase"]]]}</attribute>
+      </xpath>
+
+      <field name="partner_id" position="replace">
+        <field name="partner_id" options='{"no_create": 1, "no_open": 1}' attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+      </field>
+      <field name="partner_ref" position="replace">
+        <field name="partner_ref" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+      </field>
+      <field name="requisition_id" position="replace">
+       <field name="requisition_id" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+     </field>
+     <field name="currency_id" position="replace">
+      <field name="currency_id" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+    </field>
+    <field name="payment_term_id" position="replace">
+      <field name="payment_term_id" options="{'no_create': True}" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+    </field>
+    <field name="user_id" position="replace">
+      <field name="user_id" options='{"no_open": 1}' attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+    </field>
+    <field name="incoterm_id" position="replace">
+      <field name="incoterm_id" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+    </field>
+
+    <field name="fiscal_position_id" position="replace"> 
+      <field name="fiscal_position_id" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/> 
+    </field>
+    <field name="date_order" position="replace"> 
+      <field name="date_order" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/> 
+    </field>
+    <field name="date_planned" position="replace"> 
+      <field name="date_planned" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+    </field>
+    <field name="notes" position="replace"> 
+      <field name="notes" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/> 
+    </field>
+    <button name="button_draft" position="replace">
+      <button name="button_draft" states="cancel" string="Set to Draft" type="object" invisible="1"/>     
+    </button>   
+
+  </field>
+</record>
+</odoo>

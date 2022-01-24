@@ -1,0 +1,75 @@
+<odoo>
+
+  <record id="int_no_edit_sale_order" model="ir.ui.view" >
+    <field name="name">int_no_edit_sale_order</field>
+    <field name="model">sale.order</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock" />
+    <field name="arch" type="xml">
+
+      <xpath expr="//field[@name='order_line']" position="attributes">
+        <attribute name="attrs">{"readonly": [["state","in",["done","cancel","sent","sale"]]]}</attribute>
+      </xpath>
+
+      <field name="warehouse_id" position="replace">
+        <field name="warehouse_id" options='{"no_open": 1}' attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+      </field>
+
+      <field name="partner_id" position="replace">
+        <field name="partner_id" options='{"no_create": 1, "no_open": 1}' attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+      </field>
+      <field name="partner_invoice_id" position="replace">
+        <field name="partner_invoice_id" options='{"no_create": 1, "no_open": 1}' attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+      </field>
+      <field name="partner_shipping_id" position="replace">
+        <field name="partner_shipping_id" options='{"no_create": 1, "no_open": 1}' attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+      </field>
+      <field name="validity_date" position="replace">
+       <field name="validity_date" attrs="{'invisible': [('state', 'in', ['sale', 'done'])], 'readonly': [('state', 'in', ('cancel','sent','sale','done'))]}"/>
+     </field>
+     <field name="pricelist_id" position="replace">
+      <field name="pricelist_id" groups="product.group_sale_pricelist" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+    </field>
+    <field name="currency_id" position="replace">
+      <field name="currency_id" invisible="1" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+    </field>
+    <field name="payment_term_id" position="replace">
+      <field name="payment_term_id" options="{'no_create': True}" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+    </field>
+    <field name="company_id" position="replace">
+      <field name="company_id" readonly="1" options='{"no_open": 1}' attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+    </field>
+    <field name="user_id" position="replace">
+      <field name="user_id" options='{"no_open": 1}' attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+    </field>
+    <field name="team_id" position="replace">
+      <field name="team_id" options='{"no_open": 1}' attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+    </field>
+    <field name="picking_policy" position="replace">
+      <field name="picking_policy" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+    </field>
+    <field name="analytic_account_id" position="replace">
+      <field name="analytic_account_id" options='{"no_create": 1, "no_open": 1}' attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/>
+    </field>
+    <field name="client_order_ref" position="replace"> 
+       <field name="client_order_ref" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/> 
+    </field>
+    <field name="date_order" position="replace"> 
+      <field name="date_order" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/> 
+    </field>
+    <field name="fiscal_position_id" position="replace"> 
+      <field name="fiscal_position_id" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/> 
+    </field>
+    <field name="origin" position="replace"> 
+      <field name="origin" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/> 
+    </field>
+    <field name="note" position="replace"> 
+      <field name="note" attrs="{'readonly': [('state', 'in', ('done','cancel','sent','sale'))]}"/> 
+    </field>
+    <button name="action_draft" position="replace">
+      <button name="action_draft" states="cancel" type="object" string="Set to Quotation" invisible="1"/>      
+    </button>   
+
+  </field>
+</record>
+</odoo>

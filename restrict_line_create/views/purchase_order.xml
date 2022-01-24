@@ -1,0 +1,34 @@
+<odoo>
+
+  <record id="purchase_order_field_inh" model="ir.ui.view" >
+    <field name="name">purchase_order_field_inh</field>
+    <field name="model">purchase.order</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form" />
+    <field name="arch" type="xml">
+
+
+      <field name="picking_type_id" position="replace">
+        <field name="picking_type_id" readonly="1" options='{"no_open": 1}'/>
+      </field>
+      <field name="partner_id" position="replace">
+        <field name="partner_id" options='{"no_create": 1, "no_open": 1}'/>
+      </field>
+      <field name="company_id" position="replace">
+        <field name="company_id" readonly="1" options='{"no_open": 1}'/>
+      </field>
+      <field name="user_id" position="replace">
+        <field name="user_id" readonly="1" options='{"no_open": 1}'/>
+      </field>
+       <field name="origin" position="replace">
+        <field name="origin" readonly="0"/> <!--attrs="{'readonly': [('origin','!=',False)]}"/>-->
+      </field>
+
+      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='product_id']" position="replace">
+        <field name="product_id" options='{"no_create": 1, "no_open": 1}'/>
+      </xpath>
+
+
+    </field>
+  </record>
+</odoo>
